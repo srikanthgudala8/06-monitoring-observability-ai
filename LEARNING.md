@@ -13,7 +13,7 @@ as a practical tool for DevOps work (without trusting it blindly).
 ### Day 50 - Observability concepts
 - **Learn:** monitoring vs observability, the three pillars (metrics, logs, traces), golden signals (latency, traffic, errors, saturation), RED and USE methods, SLI / SLO / error budget.
 - **Lab:** pick your Phase 2 app and write down 3 SLIs and a target SLO for each (e.g. "99.5% of requests succeed over 30 days").
-- **AVD link:** you already used Azure Monitor / Log Analytics / Insights for AVD (connection latency, session counts, failed connections). Write down which signals those were.
+- **Server link:** list what you would watch on a Linux web server (CPU, memory, disk, request rate, error rate, latency) and sort each into metric, log or trace.
 - **Done when:** you can explain an error budget to a manager.
 
 ### Day 51 - Prometheus and PromQL
@@ -83,7 +83,7 @@ histogram_quantile(0.95, sum by (le) (rate(http_request_duration_seconds_bucket[
 ```
 ```kusto
 AzureDiagnostics | where Category == "x" | summarize count() by bin(TimeGenerated, 5m)
-WVDConnections | where State == "Completed" | summarize count() by UserName   // AVD example
+Heartbeat | summarize LastSeen = max(TimeGenerated) by Computer   // servers that stopped reporting
 ```
 ```logql
 {container="app"} |= "error" != "health"
