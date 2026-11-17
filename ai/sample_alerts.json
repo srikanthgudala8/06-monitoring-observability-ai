@@ -1,0 +1,30 @@
+{
+  "receiver": "default",
+  "status": "firing",
+  "alerts": [
+    {
+      "status": "firing",
+      "labels": {"alertname": "HighErrorRate", "severity": "warning", "job": "app", "instance": "app:8080"},
+      "annotations": {"summary": "More than 5% of requests are failing", "description": "Error ratio over the last 5 minutes is 31%."},
+      "startsAt": "2026-11-10T10:02:00Z"
+    },
+    {
+      "status": "firing",
+      "labels": {"alertname": "HighLatencyP95", "severity": "warning", "job": "app", "instance": "app:8080"},
+      "annotations": {"summary": "p95 latency above 1s", "description": "p95 latency is 1.4s."},
+      "startsAt": "2026-11-10T10:05:00Z"
+    },
+    {
+      "status": "firing",
+      "labels": {"alertname": "LowDiskSpace", "severity": "critical", "job": "node", "instance": "node-exporter:9100"},
+      "annotations": {"summary": "Less than 10% disk space left on /var"},
+      "startsAt": "2026-11-10T09:40:00Z"
+    },
+    {
+      "status": "resolved",
+      "labels": {"alertname": "TargetDown", "severity": "critical", "job": "cadvisor", "instance": "cadvisor:8080"},
+      "annotations": {"summary": "cadvisor on cadvisor:8080 is down"},
+      "startsAt": "2026-11-10T09:00:00Z"
+    }
+  ]
+}
